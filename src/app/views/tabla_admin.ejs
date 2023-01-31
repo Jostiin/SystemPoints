@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Puntos</title>
+   
+</head>
+<body>
+    <div class="box_">
+    
+    <main class="table">
+        <section class="table__header">
+            <h1 id="empresa">V.CENTER.O</h1>
+        </section>
+        <section class="table__body">
+            <form action="/sql" method="post">
+            <table>
+                <thead class="body_thead">
+                    <tr>
+                        <th>N</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Puntos</th>
+                        <th id="table_input">
+                            <input type="text" id="input_point" name="valor">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="body_tbody">
+                    <% for(var i = 0; i < students.length; i++) {  %>
+                        <% var s = students[i].id %>
+                        
+                        <tr>
+                            <td class="n_focus">
+                                    
+                                    <%= s %>
+                                
+                                
+                            </td>
+                            <td><%= students[i].Names %></td>
+                            <td><%=students[i].LastNames %></td>
+                            <td><%=students[i].Points %></td>
+                            <td class="td_btn">
+                                <button id="add" type="submit" name="add" value=<%= s %> ></button>
+                                <button id="delete" type="submit" name="delete" value=<%= s %> ></button>
+                            </td>
+                    <% } %>
+                </tbody>
+            </table>
+            </form>
+        </section>
+    </main>
+    
+    </div>
+    <script src="script/script.js"></script>
+</body>
+</html>
