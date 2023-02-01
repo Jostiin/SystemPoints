@@ -3,10 +3,10 @@ const mysql = require('mysql');
 
 module.exports = () => {
     return mysql.createConnection({
-        host:'brj0ndeqg40musybuxmz-mysql.services.clever-cloud.com',
-        user:'ulmzpjr949kkvc8m',
-        database:'brj0ndeqg40musybuxmz',
-        password:'9n50XZoHo1XESm03yKDJ',
+        host:'boexv9bcsevpjalatgrl-mysql.services.clever-cloud.com',
+        user:'uryjx9fh58w43jvk',
+        database:'boexv9bcsevpjalatgrl',
+        password:'zijz1VnnTB08xe85LqJm',
         port:'3306'
     });
 };
