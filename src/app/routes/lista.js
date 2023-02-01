@@ -5,11 +5,31 @@ module.exports = app => {
     const conection = dbConnection();
 
     app.get('/',(req,res) =>{
-
         
         res.render('login');
     
-        
+    });
+
+    app.get('/admin', (req, res) => {
+        conection.query('SELECT * FROM list_students',(err,result) =>{
+                            
+                            
+            res.render('tabla_admin',{
+                students: result,
+            
+            });
+            
+        });
+    });
+
+    app.get('/see', (req, res) => {
+        conection.query('SELECT * FROM list_students',(err,result) =>{
+                    
+            res.render('tabla_guest',{
+                students: result,
+            
+            });
+        });
     });
 
     app.post('/login',(req,res) => {
@@ -20,36 +40,25 @@ module.exports = app => {
         if(btn_entrar){
             conection.query(`SELECT * FROM admins`,(err,result) =>{
                 
-
                 result.forEach(element => {
-
+    
                     if(element.UserName == req.body.userName && element.Password == req.body.password_){
     
-                        conection.query('SELECT * FROM list_students',(err,result) =>{
-                            
-                            
-                            res.render('tabla_admin',{
-                                students: result,
-                            
-                            });
-                        });
+                        res.redirect('/admin')
+                        
                     }else{
+                        
                         res.redirect('/')
                     }
-
+                  
                    
                 });
-  
+                
             });
+            
         }
         if(btn_ver){
-            conection.query('SELECT * FROM list_students',(err,result) =>{
-                    
-                res.render('tabla_guest',{
-                    students: result,
-                
-                });
-            });
+            res.redirect('/see')
         }
     })
     
@@ -71,7 +80,7 @@ module.exports = app => {
                 
                 conection.query(`UPDATE list_students SET Points =  ${new_points} WHERE id = ${parseInt(req.body.add)}`,
                 (err,result) => {
-                    res.redirect('/')
+                    res.redirect('/admin')
                 });
             });
         }  
@@ -86,7 +95,7 @@ module.exports = app => {
                 
                 conection.query(`UPDATE list_students SET Points =  ${new_points} WHERE id = ${parseInt(req.body.delete)}`,
                 (err,result) => {
-                    res.redirect('/')
+                    res.redirect('/admin')
                 });
             });
         }
