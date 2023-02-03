@@ -1,8 +1,18 @@
 const dbConnection = require('../../config/dbConnection');
 
+var confirm_login = false;
 
 module.exports = app => {
     const conection = dbConnection();
+
+    app.get('/back', (req, res) => {
+        confirm_login = false
+        res.redirect('/')
+        
+    });
+    
+
+
 
     app.get('/',(req,res) =>{
         
@@ -11,24 +21,37 @@ module.exports = app => {
     });
 
     app.get('/admin', (req, res) => {
-        conection.query('SELECT * FROM list_students',(err,result) =>{
+
+        if(confirm_login == true){
+            conection.query('SELECT * FROM list_students',(err,result) =>{
                             
                             
-            res.render('tabla_admin',{
-                students: result,
-            
+                res.render('tabla_admin',{
+                    students: result,
+                
+                });
+                
             });
             
-        });
+        }else{
+            res.redirect('/')
+        }
+        
     });
 
     app.get('/see', (req, res) => {
         conection.query('SELECT * FROM list_students',(err,result) =>{
-                    
+            var F_points = [];
+            result.forEach(element => {
+                F_points.push(element.Points);
+            });
+            let maxPoints = Math.max(...F_points);
+            
             res.render('tabla_guest',{
                 students: result,
-            
+                unic: parseInt(maxPoints)
             });
+
         });
     });
 
@@ -43,7 +66,8 @@ module.exports = app => {
                 result.forEach(element => {
     
                     if(element.UserName == req.body.userName && element.Password == req.body.password_){
-    
+                        
+                        confirm_login = true;
                         res.redirect('/admin')
                         
                     }else{
@@ -88,9 +112,7 @@ module.exports = app => {
         if(btn_delete){
             
             conection.query(`SELECT * FROM list_students WHERE id = ${parseInt(req.body.delete)}`,(err,result) =>{
-           
-             
-                
+        
                 let new_points = result[0].Points - parseInt(get.valor);
                 
                 conection.query(`UPDATE list_students SET Points =  ${new_points} WHERE id = ${parseInt(req.body.delete)}`,
@@ -106,4 +128,5 @@ module.exports = app => {
         
         
     })
+    
 };

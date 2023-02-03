@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style_ver.css">
     <title>Puntos</title>
-   
+    <meta name="viewport" content="user-scalable=0">
 </head>
 <body>
     <div class="box_">
@@ -12,6 +12,10 @@
     <main class="table">
         <section class="table__header">
             <h1 id="empresa">V.CENTER.O</h1>
+            <form action="/back" method="get">
+                <button id="home"><div id="ico_home"></div></button>
+            </form>
+            <button id="recargar"><div id="ico_recargar"></div>Recargar</button>
         </section>
         <section class="table__body">
            
@@ -38,7 +42,13 @@
                             </td>
                             <td><%= students[i].Names %></td>
                             <td><%=students[i].LastNames %></td>
-                            <td><%=students[i].Points %></td>
+                            <% if(  students[i].Points == unic ){ %>
+                                <td class="maxpoints"> <div class="corona"></div> <%=students[i].Points %> </td>
+                            <% } else {%>
+                                <td> <%=students[i].Points %> </td>
+                            <% } %>
+                                
+                          
                             
                     <% } %>
                 </tbody>
@@ -48,6 +58,6 @@
     </main>
     
     </div>
-   
+    <script src="script/reset.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=0">
     <link rel="stylesheet" href="css/style.css">
     <title>Puntos</title>
    
@@ -12,8 +13,12 @@
     <main class="table">
         <section class="table__header">
             <h1 id="empresa">V.CENTER.O</h1>
+            <form action="/back" method="get">
+                <button id="home"><div id="ico_home"></div></button>
+            </form>
+        
         </section>
-        <section class="table__body">
+        <section class="table__body" id="table_body">
             <form action="/sql" method="post">
             <table>
                 <thead class="body_thead">
@@ -28,6 +33,7 @@
                     </tr>
                 </thead>
                 <tbody class="body_tbody">
+                    <input type="hidden" name="sTop" id="slTop"  value="sTop">
                     <% for(var i = 0; i < students.length; i++) {  %>
                         <% var s = students[i].id %>
                         

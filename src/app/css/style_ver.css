@@ -28,6 +28,74 @@ body {
    
 }
 
+#recargar{
+    background-color: #45f3ff;
+    font-size: 25px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+}
+#recargar:hover{
+    background-color: #0096c7;
+    
+}
+#ico_recargar{
+    background-image: url('../icons/reset.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.corona{
+   
+    background-image: url('../icons/ico_corona.avif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+.maxpoints{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffea00;
+    font-weight: bold;
+
+}
+
+#home{
+    width: 60px;
+    height: 50px;
+    background-color: #45f3ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+#home:hover{
+    background-color: #0096c7;
+    
+}
+#ico_home{
+    background-image: url('../icons/home.png');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 40px;
+    height: 40px;
+}
+
 .box_{
     position: relative;
     background-color: #1c1c1c;
@@ -74,6 +142,7 @@ body {
 }
 
 
+
 main.table {
     position:absolute;
     z-index: 99;
@@ -91,12 +160,11 @@ main.table {
     margin: 0 1.5rem;
     background-color:#28292d;
     padding: 1rem;
-
     color: #45f3ff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+   
 }
 
 
