@@ -1,17 +1,8 @@
 
 const mysql = require('mysql');
 
-module.exports = () => {
-    return mysql.createConnection({
-        host:'127.0.0.1',
-        user:'root',
-        database:'students_points',
-        password:''
-    
-    });
-};
 
-/*
+
 module.exports = () => {
     return mysql.createConnection({
         host:'boexv9bcsevpjalatgrl-mysql.services.clever-cloud.com',
@@ -22,4 +13,3 @@ module.exports = () => {
     });
 };
 
-*/
